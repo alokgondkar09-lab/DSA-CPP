@@ -1,0 +1,20 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& arr) {
+        int n = arr.size();
+        int j = n-1;
+        int i = 0 ;
+        for(int i=0;i<n;i++){   // 1st transpose
+            for(int j=0;j<i;j++){
+                swap(arr[i][j],arr[j][i]);
+            }
+        }
+        //Reverse each row 
+        for(int i=0;i<n;i++){
+            reverse(arr[i].begin(), arr[i].end());
+        }
+    }
+};
+
+arrr[i][0] is int so .begin and .end wont work here
+only it works for vector<int> 
