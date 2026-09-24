@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool arrayStringsAreEqual(vector<string>& s, vector<string>& t) {
+        int n = s.size();
+        int m = t.size();
+        string a;
+        string b;
+        for(int i=0;i<n;i++){
+             a += s[i];
+        }
+        for(int j=0;j<m;j++){
+             b += t[j];
+        }
+        if(a == b ){
+            return true;
+        }
+        return{};
+    }
+};
