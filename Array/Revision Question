@@ -1,0 +1,44 @@
+class Solution { 
+public: 
+    int sumOfUnique(vector<int>& arr) { 
+        int n = arr.size(); 
+        
+        if(n == 0){
+            return 0;
+        }
+
+        sort(arr.begin(), arr.end()); 
+        
+        vector<int> u; 
+        int ans = arr[0]; 
+        int freq = 1; 
+        
+        for(int i = 0; i < n - 1; i++){ 
+            if(arr[i] == arr[i + 1]){ 
+                freq++; 
+            } 
+            else{ 
+                if(freq == 1){
+                    u.push_back(arr[i]);
+                }
+                
+                freq = 1; 
+                ans = arr[i + 1]; 
+            } 
+        } 
+        
+        // Check the last element
+        if(freq == 1){
+            u.push_back(arr[n - 1]);
+        }
+         
+        int c = 0; 
+        int b = u.size(); 
+        
+        for(int k = 0; k < b; k++){ 
+            c += u[k]; 
+        } 
+        
+        return c; 
+    } 
+};
