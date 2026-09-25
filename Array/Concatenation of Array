@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& arr) {
+        int n = arr.size();
+        vector<int> ans;
+
+        for(int i=0;i<n;i++){
+            ans.push_back(arr[i]);
+        }
+
+        // just push it two times.
+
+        for(int i=0;i<n;i++){
+            ans.push_back(arr[i]);
+        }
+        return ans;
+    }
+};
