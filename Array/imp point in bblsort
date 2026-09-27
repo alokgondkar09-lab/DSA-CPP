@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> sortEvenOdd(vector<int>& arr) {
+        int n = arr.size();
+
+       // outer loop-repeat sorting
+       // inner loop-compare element and swap(bbsort)
+
+        for(int k=0;k<n;k++){ // to repeat the pass
+            for(int i=0;i<n-2;i++){ //it is just doing 1 pass 
+                if(i%2!=0){
+                    if(arr[i]<arr[i+2]){
+                    swap(arr[i],arr[i+2]);
+                   }
+                }
+                if(i%2==0){
+                    if(arr[i]>arr[i+2]){
+                    swap(arr[i],arr[i+2]);
+                }
+            }
+        }
+    }
+        return arr;
+    }
+};
