@@ -1,0 +1,42 @@
+class Solution {
+public:
+    vector<int> findMissingElements(vector<int>& arr) {
+        int n = arr.size();
+        vector<int> ans;
+        sort(arr.begin(),arr.end());
+        for(int i=0;i<n-1;i++){
+            if(arr[i] + 1 != arr[i+1]){
+                for(int x=arr[i]+1 ; x<arr[i+1] ; x++){ // extra loop for printing gap numbers
+                    ans.push_back(x);
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+
+//Method 2
+
+class Solution {
+public:
+    vector<int> findMissingElements(vector<int>& arr) {
+        vector<int> ans;
+        unordered_set<int> s;
+
+        for(int x : arr) { //s.find,end will only work on set so we are creating it instead of doing it in same array
+            s.insert(x);
+        }
+
+        int mn = *min_element(arr.begin(), arr.end());
+        int mx = *max_element(arr.begin(), arr.end());
+
+        for(int i = mn; i <= mx; i++) {
+            if(s.find(i) == s.end()) {  //s.end() indicates notfound ,  read as -if s.find(3) is not found then push back 3
+                ans.push_back(i);
+            }
+        }
+
+        return ans;
+    }
+};
