@@ -10,7 +10,7 @@ public:
                 maxi =  max(maxi,count);
             }
             if(arr[i]==0){
-                count = 0;
+                count = 0; //otherwise count keeps always ++ bcz there is no cond to break it when o occurs
             }
         }
         return maxi;
