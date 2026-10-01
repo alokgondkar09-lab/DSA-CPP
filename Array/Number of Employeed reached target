@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int numberOfEmployeesWhoMetTarget(vector<int>& arr, int tar) {
+        int n = arr.size();
+        vector<int> ans;
+        for(int i=0;i<n;i++){
+            if(arr[i]>=tar){
+                ans.push_back(arr[i]);
+            }
+        }
+        return ans.size();
+    }
+};
+
+
+class Solution {
+public:
+    int numberOfEmployeesWhoMetTarget(vector<int>& hours, int target) {
+        int count = 0;
+        for(int i = 0;i < hours.size();i++){
+        if(hours[i] >= target)
+            count++;
+        }
+        return count;
+    }
+};
+
+
