@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        while(n!=1){  //means this loop runs tll n is not equal to 1.
+            int sum = 0;
+            while(n>0){
+                int digit = n%10;      //gets last digit.
+                sum = sum + digit*digit ;  // square and add previous number.
+                n /= 10;              //removes last digit.
+            }
+
+            n = sum ;
+
+            if(n==4){ //4 is a endless cycle after squaring and adding at last we 4 again.
+                return false;
+            }
+        }
+        return true;
+    }
+};
