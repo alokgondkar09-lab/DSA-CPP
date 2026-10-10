@@ -27,3 +27,38 @@ public:
         return s;
     }
 };
+
+
+METHOD 2(USING 1LOOP ONLY)
+
+class Solution {
+public:
+    string mergeAlternately(string w, string v) {
+        string s;
+        int n = w.size(), m = v.size();
+
+        for (int i = 0; i < max(n, m); i++) {
+            if (i < n) s.push_back(w[i]);
+            if (i < m) s.push_back(v[i]);
+        }
+
+        return s;
+    }
+};
+
+METHOD 3(concatenation)
+
+class Solution {
+public:
+    string mergeAlternately(string w, string v) {
+        string ans;
+        int n = w.size(), m = v.size();
+
+        for (int i = 0; i < n || i < m; i++) {
+            if (i < n) ans += w[i];
+            if (i < m) ans += v[i];
+        }
+
+        return ans;
+    }
+};
