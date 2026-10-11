@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int earliestTime(vector<vector<int>>& tasks) {
+        int n = tasks.size();
+        int m = tasks[0].size();
+        vector<int> ans;
+        for(int i=0;i<n;i++){
+            int a = tasks[i][0] + tasks[i][1] ;
+            ans.push_back(a);
+        }
+        sort(ans.begin(),ans.end());
+        return ans[0];
+    }
+};
+
+METHOD 2
+class Solution {
+public:
+    int earliestTime(vector<vector<int>>& tasks) {
+        int ans = INT_MAX;  or int ans = 200;
+
+        for (int i = 0; i < tasks.size(); i++) {
+            int finish = tasks[i][0] + tasks[i][1];
+
+            if (finish < ans) {
+                ans = finish;
+            }
+        }
+
+        return ans;
+    }
+};
