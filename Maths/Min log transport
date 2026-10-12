@@ -1,3 +1,8 @@
+We use it to prevent integer overflow when multiplying large numbers.
+1 → int (usually 32-bit)
+1LL → long long (usually 64-bit)
+
+
 class Solution {
 public:
     long long minCuttingCost(int n, int m, int k) {
