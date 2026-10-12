@@ -1,0 +1,53 @@
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& arr) {
+        int n = arr.size();
+        vector<int> ans(n);
+        int i = 0;
+        int p = 0;
+        int q = n - 1;
+        while(i<n){
+            if(arr[i]%2==0){
+                ans[p]=arr[i];
+                i++;
+                p++;
+            }
+            else if(arr[i]%2==1){
+                ans[q]=arr[i];
+                i++;
+                q--;
+            }
+        }
+        return ans;
+    }
+};  
+
+first i created a ans array of size n
+so here i am taking an element-if it is even i am placing at starting of ans vector and incresing ans vec.. index so that i can store next ele in new box and simultaneously increasing accessing ele index also.
+                              in odd i am storing from back and reducing index of ans vector so that to store in previous box nut increasing index of accessing element.
+
+
+METHOD 2
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& arr) {
+        int i = 0;
+        int j = arr.size() - 1;
+
+        while (i < j) {
+            if (arr[i] % 2 == 0) {
+                i++;
+            }
+            else if (arr[j] % 2 == 1) {
+                j--;
+            }
+            else { //when arr[i] is odd and arr[j] is even.
+                swap(arr[i], arr[j]); //now even comes at left and odd goes to right as per required condition.
+                i++;
+                j--;
+            }
+        }
+
+        return arr;
+    }
+};
