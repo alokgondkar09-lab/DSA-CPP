@@ -1,0 +1,22 @@
+class Solution {
+public:
+    long long findTheArrayConcVal(vector<int>& arr) {
+        int n = arr.size();
+        int i = 0;
+        int j = n - 1;
+        long long sum = 0;
+        while(i<j){
+            string a = to_string(arr[i]);
+            string b = to_string(arr[j]);
+            string c = a + b;
+            long long num = stoi(c);
+            sum+=num;
+            i++;
+            j--;
+        }
+        if(i==j){
+            sum+=arr[i];
+        }
+        return sum;
+    }
+};
