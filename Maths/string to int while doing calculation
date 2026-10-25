@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int subtractProductAndSum(int n) {
+        string s = to_string(n);
+        int a = s.size();
+        int pro = 1;
+        int sum = 0;
+        
+        for(int i=0;i<a;i++){
+             pro*=(s[i]-'0');   --->>'2' - '0' gives 2  (s[i] is already '-')
+             sum+=(s[i]-'0');   --->> int digit = s[i] - '0';
+        }
+        
+        int b = pro - sum;
+        return b;
+    }
+};
