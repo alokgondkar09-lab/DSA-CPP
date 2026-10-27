@@ -1,0 +1,41 @@
+class Solution {
+public:
+    int maximumWealth(vector<vector<int>>& arr) {
+        int n = arr.size();
+        int m = arr[0].size();
+        vector<int> ans;
+        int sum = 0;
+        int maxi = 0;
+        for(int i=0;i<n;i++){
+            int j = 0;             -->>//This j should be inside loop , bcz when j++ because m it just stops after calculating 1st row sum , so that again it should start from 0 while calculating for next i value.
+            while(j<m){
+                sum+=arr[i][j];
+                maxi = max(maxi,sum);   -->> // if this is outside 2nd for loop its good
+                j++;
+            }
+            sum = 0;                 -->>//resetting sum to 0 when we get sum of each row.
+        }
+        return maxi;
+    }
+};
+
+OR
+BETTER LOOKING WAY:-
+
+class Solution {
+public:
+    int maximumWealth(vector<vector<int>>& arr) {
+        int n = arr.size();
+        int m = arr[0].size();
+        int sum = 0;
+        int maxi = 0;
+        for (int i = 0; i < n; i++) {
+            sum = 0;
+            for (int j = 0; j < m; j++) {
+                sum += arr[i][j];
+            }
+            maxi = max(maxi, sum);
+        }
+        return maxi;
+    }
+};
