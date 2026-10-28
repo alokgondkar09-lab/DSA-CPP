@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<string> fizzBuzz(int n) {
+        vector<string> ans;
+        for(int i=1;i<=n;i++){  
+            if(i%3==0 && i%5==0){                  //always keep && condition first EX-i=15 here both i%3==0 and i%5==0 will execute or overlap , so filter && condition first to avoid overlap errors.
+                ans.push_back("FizzBuzz");
+            }
+            else if(i%3==0){
+                ans.push_back("Fizz");
+            }
+            else if(i%5==0){
+                ans.push_back("Buzz");
+            }
+            else{
+                ans.push_back(to_string(i));      // not just i , (not "i")-->>it returns ["i"] not ["15"] so convert to_string.
+            }
+        }
+        return ans;
+    }
+};
