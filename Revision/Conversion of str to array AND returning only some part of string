@@ -1,0 +1,46 @@
+class Solution {
+public:
+    string truncateSentence(string s, int k) {
+        vector<string> arr;                                                            //Collection of multiple separate strings.
+        string word = "";                                                              //think it has temporary collection of single word(one string).
+        for(int i=0;i<s.size();i++){
+            if(s[i]==' '){
+                arr.push_back(word);
+                word = "";                                                             //Resetting word to emptystring when pushed a word.
+            }
+            else{
+                word += s[i];                                                         //if s[i] is not space then keep on formiing a word or string.
+            }
+        }
+        arr.push_back(word);                                                         //to push last word because it never encounters space.so it never gets pushed.
+
+        string ans;
+        int n = arr.size();
+        if(k>=n){
+            return s;
+        }
+
+        for(int i=0;i<k-1;i++){
+            ans+=arr[i];
+            ans+=" ";
+        }
+        ans+=arr[k-1];                                                              //to avoid extra space for last word separatily push it back.
+       
+        return ans;
+    }
+};
+
+
+METHOD 2(BETTER)
+
+int count = 0;
+for(int i=0;i<s.size();i++){
+     if(s[i]==' '){
+           count++;
+           if(count==k){
+                return s.substr(0,i);
+            }
+        }
+   }
+   return s;                         // if count is not equal to k (no. of spaces is less than k it returns full string and even when no.of spaces is greater than k) 
+
