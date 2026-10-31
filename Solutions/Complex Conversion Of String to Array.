@@ -23,3 +23,26 @@ public:
         return ans[a-1].size();
     }
 };
+
+
+MY METHOD 
+
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int n = s.size();
+        int count = 0;
+        for(int i=n-1;i>=0;i--){
+            if(s[i]==' ' && count==0){           //to skip condition where the initial char is itself empty string.
+                continue;
+            }
+            if(s[i]!=' '){
+                count++;
+            }
+            else{                                // when s[i]==' ' , but not when count is zero.
+                return count;
+            }
+        }
+        return count;                //dont type return{} , because this(return count) handles case where string contains only one word.
+    }
+}; 
