@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    int getKthFromLast(Node* head, int k) {
+        Node* slow = head;
+        Node* fast = head;
+                                               //move fast k steps ahead
+        for(int i=1;i<=k;i++){
+            if(fast==NULL){                   //base case when n<k.
+                return -1;
+            }
+            fast = fast->next;
+        }
+                                           //move slow and fast untill fast becomes NULL
+        while(fast!=NULL){
+            slow = slow->next;
+            fast = fast->next;
+        }
+        return slow->data;
+    }
+};
