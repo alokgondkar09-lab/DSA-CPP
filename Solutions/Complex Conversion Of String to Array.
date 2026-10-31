@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int n = s.size();
+        vector<string> ans;
+        string words = "";
+        for(int i=0;i<n;i++){
+            if(s[i]==' '){
+                if(words!=""){   //to avoid condition where we have empty str at starting only.(this means if words is not empty string then only push back)
+                    ans.push_back(words);
+                     words = "";
+                }
+            }
+            else{
+                words+=s[i];
+            }
+        }
+        if(!words.empty()){
+            ans.push_back(words);  //if "hello  " then we are pushing empty string , so use when words is not empty then only oush back.
+        }
+        
+        int a = ans.size();
+        return ans[a-1].size();
+    }
+};
