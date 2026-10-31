@@ -1,0 +1,7 @@
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        node->val = node->next->val;     //copying value of next node
+        node->next = node->next->next;   //deleteing nextnode of node 
+    }
+};
