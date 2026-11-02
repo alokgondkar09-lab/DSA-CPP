@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int findNumbers(vector<int>& arr) {
+        int n = arr.size();
+        int count = 0;
+        for(int i=0;i<n;i++){
+            string s = to_string(arr[i]);
+            if(s.size()%2==0){
+                count++;
+            }
+        }
+        return count;
+    }
+};
+
+
+
+METHOD-2
+
+class Solution {
+public:
+    int findNumbers(vector<int>& arr) {
+        int n = arr.size();
+        int count = 0 , even = 0;
+        for(int i=0;i<n;i++){
+            count = 0;                 //RESET IT other wise count value continues
+                        
+            if(arr[i]==0){             //We are using this bcz this doesnt undergo while loop (cond.check).
+                count = 1;
+            }
+            int num = abs(arr[i]);     //to handle -ve numbers 
+            while(num!=0){
+                num/=10;
+                count++;
+            }
+            if(count%2==0){
+                even++;
+            }
+        }
+        return even;
+    }
+}; 
