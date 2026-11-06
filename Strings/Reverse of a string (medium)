@@ -1,0 +1,43 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        vector<string> ans;
+        string word = "";
+        for(int i=0;i<s.size();i++){
+            if(s[i]==' '){
+                if(word!=""){
+                    ans.push_back(word);
+                }
+                word = "";
+            }
+            else{
+                word+=s[i];
+            }
+        }
+        ans.push_back(word);    //to push last word bcz it never encounters space.
+
+        int n = ans.size();
+        int i = 0;
+        int j = n - 1;
+        while(i<=j){
+            swap(ans[i],ans[j]);
+            i++;
+            j--;
+        }
+
+        string t = "";
+        for(int i=0;i<n-1;i++){
+            if(ans[i]==""){
+                continue;
+            }
+            t += ans[i];
+            if(i!=n-1){
+                 t += " ";
+            }      
+        }
+        if(ans[n-1]!=""){
+            t+=ans[n-1];
+        }
+        return t;
+    }
+};
