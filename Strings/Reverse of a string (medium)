@@ -27,15 +27,13 @@ public:
 
         string t = "";
         for(int i=0;i<n-1;i++){
-            if(ans[i]==""){
-                continue;
-            }
+            // if(ans[i]==""){              //already added in like 8-9
+            //     continue;
+            // }
             t += ans[i];
-            if(i!=n-1){
-                 t += " ";
-            }      
+            t += " ";
         }
-        if(ans[n-1]!=""){
+        if(ans[n-1]!=""){         //make sure the last ele is not "".otherwise we'll get extra space in t
             t+=ans[n-1];
         }
         return t;
