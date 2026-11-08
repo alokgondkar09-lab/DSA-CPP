@@ -1,0 +1,43 @@
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* i = list1;
+        ListNode* dummy = new ListNode(-1);
+        ListNode* j = list2;
+        ListNode* k = dummy;
+        while(j!=NULL && i!=NULL){
+            if(i->val <= j->val){
+                k->next = i;
+                i = i->next;
+                k = k->next;
+            }
+            else{                        
+                k->next = j;
+                j = j->next;
+                k = k->next;
+            }
+        }
+        if(j==NULL) k->next = i;
+        else k->next = j;
+        return dummy->next;
+    }
+    ListNode* sortList(ListNode* head) {
+        if(head==NULL || head->next==NULL) return head;         //base case
+        //step1: break the list into two halfs. 
+        //Middle of LL code.
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while( fast->next!=NULL && fast->next->next!=NULL ){    //[1st handles odd case , 2nd even case]
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        // at this point slow is at left middle
+        ListNode* a = slow->next;
+        slow->next = NULL;
+
+        head = sortList(head);
+        a = sortList(a);
+
+        return mergeTwoLists(head,a);
+    }
+};
