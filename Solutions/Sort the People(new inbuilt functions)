@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<string> sortPeople(vector<string>& arr1, vector<int>& arr2) {
+        int n = arr1.size();
+        vector<pair<int,string>> v;
+        for(int i=0;i<n;i++){
+            v.push_back({arr2[i],arr1[i]});                          //use {} only
+            // v.push_back( make_pair(arr1[i],arr2[i]) );             OR   
+        }
+
+        sort(v.begin(),v.end());
+        reverse(v.begin(),v.end());           //they want descending order
+
+        vector<string> ans;
+        for(int i=0;i<n;i++){
+            ans.push_back(v[i].second);
+        }
+        return ans;
+    }
+};
