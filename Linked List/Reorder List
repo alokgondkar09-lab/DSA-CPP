@@ -1,0 +1,57 @@
+class Solution {
+public:
+    ListNode* reverse(ListNode* head) {
+        ListNode* curr = head;
+        ListNode* prev = NULL;
+        while(curr!=NULL){
+            ListNode* fwd = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = fwd;
+        }
+        return prev;
+    }
+    void reorderList(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while( fast->next!=NULL && fast->next->next!=NULL ){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* b = slow->next;
+        slow->next = NULL;
+
+        b = reverse(b);
+        ListNode* d = new ListNode(-1);
+        ListNode* k = d;
+        ListNode* i = head;
+        ListNode* j = b;
+        while(i!=NULL && j!=NULL){                                                                   
+            k->next = i;
+            i = i->next;            //Save Access to next node                 
+            k = k->next;
+
+            k->next = j;
+            j = j->next;
+            k = k->next;
+        }
+        if(j==NULL) k->next = i;
+        else k->next = j;
+    }
+};
+
+
+instead of that while() statement we cal also use:-  THIS METHOD HELPS TO GET ACCESS TO NEXT NODE WHEN WE ARE CHANGING LINKS BETWEEM TWO BRAKEN MINI LISTS.
+while(i != NULL && j != NULL) {                      LIKE WE ARE ALREADY NAMING(RESERVING) A TAG FOR NEXT NODE BEFORE CONNECTION BRAKES SO THAT WE CAN USE THAT NODE(NEXTNODE) FOR FURTHER CONNECTION.
+    ListNode* a = i->next;
+    ListNode* c = j->next;
+
+    k->next = i;
+    k = k->next;
+
+    k->next = j;
+    k = k->next;
+
+    i = a;
+    j = c;
+}
