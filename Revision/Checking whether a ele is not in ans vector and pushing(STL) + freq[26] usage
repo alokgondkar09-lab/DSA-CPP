@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool checkIfPangram(string s) {
+        int n = s.size();
+        vector<char> ans;                                                        //NOTE HERE I HAVE USED <CHAR> NOT <STRING> BECAUSE WE ARE PUSHING SINGLE LETTER(CHAR) NOT WORD.
+        for(int i=0;i<n;i++){
+            if( find(ans.begin(),ans.end(),s[i])==ans.end() ){                  //STL ALGORITHM TO FIND WHETHER A ELE IS ALREADY PRESENT IN ANS VECTOR.
+                ans.push_back(s[i]);
+            }
+        }
+        int a = ans.size();
+        if(a>=26) return true;
+        else return false;
+    }
+};
+
+class Solution {
+public:
+    bool checkIfPangram(string s) {
+        vector<bool> freq(26, false);                        //INITIALLY SETTING ALL 26 BOXES AS FASLE.
+        for(char ch : s){
+            freq[ch - 'a'] = true;                          //UPDATE THE BOX VALUE.
+        }
+
+        for(int i = 0; i < 26; i++){
+            if(freq[i] == false) return false;             //IT MEANS THAT LETTER IS NOT PRESENT IN STRING BECAUSE WE NEVER ENCOUNTERED IT IN PREVIOUS LOOP.
+        }
+
+        return true;
+    }
+};
