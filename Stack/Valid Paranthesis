@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        if(s.size()%2 == 1) return false;                              >>  //if its odd retrun false , because there should always be pairs(even).
+
+        stack<int> st;
+        for(char ch : s){
+            if(ch=='(' or ch=='{' or ch=='[')  st.push(ch);
+            else{
+                if(st.size()==0) return false;                        >> //IF NO elements are pushed the stack is empty and therefore we cant access top element (it gives error).
+                else if(ch==')' and st.top()=='(')  st.pop();                      
+                else if(ch=='}' and st.top()=='{')  st.pop();                      
+                else if(ch==']' and st.top()=='[')  st.pop(); 
+                else return false;                                    >> //if closing and top are not matching turanth return false; (closing ')' and top ']')
+            }
+        }
+        return (st.size()==0);                                        >>this return(true or false)
+    }
+};
