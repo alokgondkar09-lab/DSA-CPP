@@ -1,0 +1,20 @@
+stack<char> st;
+string ans = "";
+
+while(!st.empty()){
+    ans += st.top();
+    st.pop();
+}
+reverse(ans.begin(), ans.end());
+
+
+
+
+stack<int> st;
+vector<int> ans;
+
+while(!st.empty()){
+    ans.push_back(st.top());
+    st.pop();
+}
+reverse(ans.begin(), ans.end());
